@@ -1,23 +1,43 @@
 package com.company;
 
-public enum City {
+public enum City
+{
     TAIPEI(0),
     TAICHUNG(1),
     KAOHSIUNG(2),
     OTHER(3);
 
     private int id;
-    City(int id) {
+    private String[] idString = {"TAIPEI",
+                                 "TAICHUNG",
+                                 "KAOHSIUNG",
+                                 "OTHER"};
+    City(int id)
+    {
         this.id = id;
     }
 
-    int getId(){
+    public int getId()
+    {
         return this.id;
     }
+    
+    public String getIDString()
+    {
+        if (id < 3)
+        {
+            return idString[id];
+        }
+        
+        return idString[3];
+    }
 
-    public static City fromId(int id) {
-        for (City type : values()) {
-            if (type.getId() == id) {
+    public static City fromId(int id)
+    {
+        for (City type : values())
+        {
+            if (type.getId() == id)
+            {
                 return type;
             }
         }

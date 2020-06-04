@@ -1,6 +1,7 @@
 package com.company;
 
-public class ScoreSheet {
+public class ScoreSheet
+{
     int Math;
     int English;
     int Chinese;
