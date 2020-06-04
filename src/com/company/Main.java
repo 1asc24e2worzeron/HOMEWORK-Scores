@@ -2,7 +2,7 @@ package com.company;
 
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
-
+import java.util.stream.*;
 import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -18,31 +18,44 @@ public class Main {
         // DATA INPUT
         List<Student> students = new ArrayList<>();
         Scanner scanner = new Scanner(new File("DATA.csv"));
-        scanner.useDelimiter(",");
-        while (scanner.hasNext())  //returns a boolean value
+        //scanner.useDelimiter(",\\n");
+
+        boolean ScanningSetup = false;
+        while (scanner.hasNextLine())  //returns a boolean value
         {
             //FN-LN-LOC-DATE-GENDER-MATH-ENGLISH-CHINESE-AVERAGE-ID
+            /*String buffer = scanner.next();
+            System.out.println(buffer);
+            */
+            String buffer = scanner.nextLine();
+            Scanner lineScanner = new Scanner(buffer);
+            lineScanner.useDelimiter(",");
             Student input = new Student();
-            input.Info.FirstName = scanner.next();
-            input.Info.LastName = scanner.next();
 
-            input.Info.city = City.fromId(Integer.parseInt(scanner.next()));
-            input.Info.BirthDay = scanner.next();
-            input.Info.gender = Gender.fromId(Integer.parseInt(scanner.next()));
+            input.Info.FirstName = lineScanner.next();
 
-            input.Scores.Math = Integer.parseInt(scanner.next());
-            input.Scores.English = Integer.parseInt(scanner.next());
-            input.Scores.Chinese = Integer.parseInt(scanner.next());
-            input.Scores.Average = Double.parseDouble(scanner.next());
+            input.Info.LastName = lineScanner.next();
+            input.Info.city = City.fromId(Integer.parseInt(lineScanner.next()));
+            input.Info.BirthDay = lineScanner.next();
+            input.Info.gender = Gender.fromId(Integer.parseInt(lineScanner.next()));
 
-            input.Id = scanner.next();
 
+            input.Scores.Math = Integer.parseInt(lineScanner.next());
+            input.Scores.English = Integer.parseInt(lineScanner.next());
+            input.Scores.Chinese = Integer.parseInt(lineScanner.next());
+            input.Scores.Average = Double.parseDouble(lineScanner.next());
+
+            input.Id = lineScanner.next();
+
+            lineScanner.close();
             students.add(input);
         }
         scanner.close();  //closes the scanner
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         //Q1
-        List result = students.stream().sorted(comparing(Student::getId)).collect(toList());
-
+        System.out.println("Q1 : ");
+        //List result = students.stream().sorted(comparing(Student::getId)).collect(toList());
+        Stream<Student> Q1Output = students.stream().sorted(comparing(Student::getId));
+        Q1Output.forEach(student -> System.out.println(student.Info.FirstName + " " + student.Info.LastName));
     }
 }

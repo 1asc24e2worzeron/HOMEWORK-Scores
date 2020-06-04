@@ -2,8 +2,8 @@ package com.company;
 
 public class Student {
     String Id;
-    Person Info;
-    ScoreSheet Scores;
+    Person Info = new Person();
+    ScoreSheet Scores = new ScoreSheet();
 
 
     public int getId(){
