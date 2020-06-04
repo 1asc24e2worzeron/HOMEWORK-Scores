@@ -7,7 +7,7 @@ public class Person
     City city;
     String BirthDay;
     Gender gender;
-    
+
     public City getCity()
     {
         return city;

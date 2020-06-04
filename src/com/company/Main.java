@@ -1,7 +1,8 @@
 package com.company;
 
 import static java.util.Comparator.comparing;
-import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.partitioningBy;
+//import static java.util.stream.Collectors.toList;
 import java.util.stream.*;
 import java.io.*;
 import java.util.Scanner;
@@ -11,7 +12,6 @@ import java.util.List;
 
 import java.util.Map;
 
-import java.util.Set;
 import java.text.ParseException;
 
 
@@ -69,6 +69,7 @@ public class Main {
             return 0;
         });
         Q1OutputB.forEach(student -> System.out.println(student.Info.FirstName + " " + student.Info.LastName));
+        System.out.println();
         
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         //Q2
@@ -77,7 +78,7 @@ public class Main {
         Set<City> Q2City = Q2Persons.stream().map(Person::getCity).collect(Collectors.toSet());
         Set<String> Q2Output = Q2City.stream().map(City::getIDString).collect(Collectors.toSet());
         Q2Output.forEach(System.out::println);
-        System.out.println("");
+        System.out.println();
         
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         //Q3
@@ -86,11 +87,20 @@ public class Main {
         Q3Output.forEach((name, list) -> {
             System.out.println(name + ":");
             list.forEach(Person -> System.out.println(Person.getFirstName() + " " + Person.getLastName()));
-            System.out.println("");
+            System.out.println();
         });
-        System.out.println("");
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        System.out.println();
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Q4
+        System.out.println("Q4 : ");
+        Map<Boolean, List<Person>> Q4Output = students.stream().map(Student::getInfo).collect(partitioningBy(Person -> Person.gender.getId() == 0));
+        Q4Output.forEach((gender, list) -> {
+            System.out.println(gender ? "Male:" : "Female:");
+            list.forEach(Person -> System.out.println(Person.getFirstName() + " " + Person.getLastName()));
+            System.out.println();
+        });
+        System.out.println();
 
 
     }
