@@ -5,6 +5,7 @@ import static java.util.stream.Collectors.toList;
 import java.util.stream.*;
 import java.io.*;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +54,14 @@ public class Main {
 
         Stream<Student> Q1Output = students.stream().sorted(comparing(Student::getId));
         Q1Output.forEach(student -> System.out.println(student.Info.FirstName + " " + student.Info.LastName));
-
-
+        
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Q2
+        System.out.println("Q2(2) : ");
+        Set<Person> Q2Persons = students.stream().map(Student::getInfo).collect(Collectors.toSet());
+        Set<City> Q2City = Q2Persons.stream().map(Person::getCity).collect(Collectors.toSet());
+        Set<String> Q2Output = Q2City.stream().map(City::getIDString).collect(Collectors.toSet());
+        Q2Output.forEach(String -> System.out.println(String));
     }
+    
 }

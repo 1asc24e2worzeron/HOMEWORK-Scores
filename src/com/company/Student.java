@@ -1,12 +1,18 @@
 package com.company;
 
-public class Student {
+public class Student
+{
     String Id;
     Person Info = new Person();
     ScoreSheet Scores = new ScoreSheet();
 
-
-    public int getId(){
+    public int getId()
+    {
         return Integer.parseInt(this.Id);
+    }
+    
+    public Person getInfo()
+    {
+        return Info;
     }
 }
