@@ -7,10 +7,8 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Set;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class Main {
     public static void main(String[] args) throws Exception  {
@@ -67,8 +65,7 @@ public class Main {
         });
         Q1OutputB.forEach(student -> System.out.println(student.Info.FirstName + " " + student.Info.LastName));
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        //Q2
-        System.out.println("Q2 : ");
+
 
     }
 }
