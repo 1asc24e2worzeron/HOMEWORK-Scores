@@ -2,18 +2,15 @@ package com.company;
 
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.partitioningBy;
+import static java.util.stream.Collectors.summarizingDouble;
 //import static java.util.stream.Collectors.toList;
+import java.util.*;
 import java.util.stream.*;
 import java.io.*;
-import java.util.Scanner;
-import java.util.Set;
-import java.util.ArrayList;
-import java.util.List;
-
-import java.util.Map;
 
 import java.text.ParseException;
 
+import java.util.DoubleSummaryStatistics;
 
 public class Main {
     public static void main(String[] args) throws Exception  {
@@ -101,6 +98,27 @@ public class Main {
             System.out.println();
         });
         System.out.println();
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Q5
+        System.out.println("Q5 : ");
+        DoubleSummaryStatistics mathInfo = students.stream().map(Student::getScores).collect(summarizingDouble(ScoreSheet::getMath)),
+                                englishInfo = students.stream().map(Student::getScores).collect(summarizingDouble(ScoreSheet::getEnglish)),
+                                chineseInfo = students.stream().map(Student::getScores).collect(summarizingDouble(ScoreSheet::getChinese));
+        System.out.println( "Math:\n" +
+                            "\tAverage:\t" + mathInfo.getAverage() + "\n" +
+                            "\tMinimum:\t" + mathInfo.getMin() + "\n" +
+                            "\tMaximum:\t" + mathInfo.getMax() + "\n");
+        System.out.println( "English:\n" +
+                            "\tAverage:\t" + englishInfo.getAverage() + "\n" +
+                            "\tMinimum:\t" + englishInfo.getMin() + "\n" +
+                            "\tMaximum:\t" + englishInfo.getMax() + "\n");
+        System.out.println( "Chinese:\n" +
+                            "\tAverage:\t" + chineseInfo.getAverage() + "\n" +
+                            "\tMinimum:\t" + chineseInfo.getMin() + "\n" +
+                            "\tMaximum:\t" + chineseInfo.getMax() + "\n");
+        System.out.println();
+
 
 
     }

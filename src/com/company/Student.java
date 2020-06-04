@@ -19,9 +19,10 @@ public class Student
         return Info;
     }
 
+    public ScoreSheet getScores() { return Scores; }
+
     public Date getDate() throws ParseException {
         Date result = new SimpleDateFormat("dd/MM/yyyy").parse(this.Info.BirthDay);
         return result;
-
     }
 }
