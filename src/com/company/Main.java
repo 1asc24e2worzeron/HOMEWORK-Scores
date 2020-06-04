@@ -18,15 +18,10 @@ public class Main {
         // DATA INPUT
         List<Student> students = new ArrayList<>();
         Scanner scanner = new Scanner(new File("DATA.csv"));
-        //scanner.useDelimiter(",\\n");
 
-        boolean ScanningSetup = false;
         while (scanner.hasNextLine())  //returns a boolean value
         {
             //FN-LN-LOC-DATE-GENDER-MATH-ENGLISH-CHINESE-AVERAGE-ID
-            /*String buffer = scanner.next();
-            System.out.println(buffer);
-            */
             String buffer = scanner.nextLine();
             Scanner lineScanner = new Scanner(buffer);
             lineScanner.useDelimiter(",");
@@ -53,9 +48,12 @@ public class Main {
         scanner.close();  //closes the scanner
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         //Q1
-        System.out.println("Q1 : ");
+        System.out.println("Q1(1) : ");
         //List result = students.stream().sorted(comparing(Student::getId)).collect(toList());
+
         Stream<Student> Q1Output = students.stream().sorted(comparing(Student::getId));
         Q1Output.forEach(student -> System.out.println(student.Info.FirstName + " " + student.Info.LastName));
+
+
     }
 }
