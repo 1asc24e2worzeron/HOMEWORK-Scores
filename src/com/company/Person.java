@@ -12,4 +12,14 @@ public class Person
     {
         return city;
     }
+    
+    public String getFirstName()
+    {
+        return FirstName;
+    }
+    
+    public String getLastName()
+    {
+        return LastName;
+    }
 }
