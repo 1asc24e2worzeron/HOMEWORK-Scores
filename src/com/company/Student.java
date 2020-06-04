@@ -15,10 +15,9 @@ public class Student
         return Integer.parseInt(this.Id);
     }
     
-    public Person getInfo()
-    {
+    public Person getInfo() {
         return Info;
-
+    }
 
     public Date getDate() throws ParseException {
         Date result = new SimpleDateFormat("dd/MM/yyyy").parse(this.Info.BirthDay);
